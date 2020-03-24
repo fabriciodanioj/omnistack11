@@ -21,13 +21,17 @@ class SessionController {
       }
       const { email, password } = req.body;
 
-      const ong = await connection('ongs').where({ email });
+      const ong = await connection('ongs')
+        .where({ email })
+        .first();
 
-      if (ong.length === 0) {
+      if (!ong) {
         return res.status(400).send({ error: 'User not exists' });
       }
 
-      const match = bcryptjs.compare(password, ong.password_hash);
+      const { password_hash } = ong;
+
+      const match = await bcryptjs.compare(password, password_hash);
 
       if (match) {
         return res.status(200).send({
