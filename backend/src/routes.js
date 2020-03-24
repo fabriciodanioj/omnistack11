@@ -17,6 +17,7 @@ routes.get('/ong', OngController.index);
 routes.post('/incident', AuthMiddleware, IncidentController.store);
 routes.get('/incident', IncidentController.index);
 routes.get('/incident/:id', IncidentController.show);
+routes.delete('/incident/:id', AuthMiddleware, IncidentController.destroy);
 
 routes.get('/profile', AuthMiddleware, ProfileController.index);
 

@@ -49,6 +49,18 @@ class IncidentController {
       return res.status(400).send(error);
     }
   }
+
+  async destroy(req, res) {
+    try {
+      const { id } = req.params;
+      await connection('incidents')
+        .where({ id })
+        .delete();
+      return res.status(204).send();
+    } catch (error) {
+      return res.status(400).send(error);
+    }
+  }
 }
 
 export default new IncidentController();
