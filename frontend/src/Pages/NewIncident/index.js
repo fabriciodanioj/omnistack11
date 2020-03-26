@@ -1,10 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Container } from "./styles";
+
+import api from "../../Services/api";
 
 import logo from "../../assets/logo.svg";
 
 export default function Register() {
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [value, setValue] = React.useState();
+
+  const history = useHistory();
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      await api.post("/incident", {
+        title,
+        description,
+        value
+      });
+
+      history.push("/home");
+    } catch (error) {
+      alert("Erro ao cadastrar caso, tente novamente");
+    }
+  };
+
   return (
     <Container>
       <div className="content">
@@ -22,13 +45,27 @@ export default function Register() {
             </Link>
           </div>
         </div>
-        <form>
-          <input type="text" placeholder="Titulo do caso" />
-          <textarea placeholder="Descrição" />
-          <input type="number" placeholder="Valor em reais" />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Titulo do caso"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="Descrição"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Valor em reais"
+            value={value}
+            onChange={e => setValue(e.target.value)}
+          />
           <div className="button-area">
-            <button>Cancelar</button>
-            <button>Cadastrar</button>
+            <button type="reset">Cancelar</button>
+            <button type="submit">Cadastrar</button>
           </div>
         </form>
       </div>

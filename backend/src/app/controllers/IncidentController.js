@@ -44,7 +44,7 @@ class IncidentController {
           'ongs.name',
           'ongs.email',
           'ongs.phone',
-          'ongs.zip_code',
+          'ongs.city',
           'ongs.uf',
         ]);
 

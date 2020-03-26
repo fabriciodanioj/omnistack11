@@ -8,7 +8,7 @@ class OngController {
       const schema = Yup.object().shape({
         name: Yup.string().required(),
         phone: Yup.string().required(),
-        zip_code: Yup.string().required(),
+        city: Yup.string().required(),
         uf: Yup.string().required(),
         email: Yup.string()
           .email()
@@ -20,7 +20,7 @@ class OngController {
         return res.status(400).send({ error: 'Validation fails' });
       }
 
-      const { name, email, password, phone, zip_code, uf } = req.body;
+      const { name, email, password, phone, city, uf } = req.body;
 
       const password_hash = await bcryptjs.hash(password, 10);
 
@@ -35,7 +35,7 @@ class OngController {
         email,
         password_hash,
         phone,
-        zip_code,
+        city,
         uf,
       });
 

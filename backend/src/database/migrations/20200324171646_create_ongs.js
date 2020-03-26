@@ -8,7 +8,7 @@ exports.up = knex => {
       .unique();
     table.string('password_hash').notNullable();
     table.string('phone').notNullable();
-    table.string('zip_code').notNullable();
+    table.string('city').notNullable();
     table.string('uf', 2).notNullable();
   });
 };
