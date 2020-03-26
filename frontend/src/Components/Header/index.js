@@ -1,6 +1,8 @@
 import React from "react";
 
-import logo from '../../assets/logo.svg'
+import { Link } from "react-router-dom";
+
+import logo from "../../assets/logo.svg";
 
 import { Container } from "./styles";
 
@@ -12,7 +14,9 @@ export default function Header({ name }) {
         <h1>Bem vinda, {name}</h1>
       </div>
       <div className="buttons">
-        <button>Cadastrar novo caso</button>
+        <Link to="/new" >
+          <button>Cadastrar novo caso</button>
+        </Link>
         <button className="logoff">
           <span class="material-icons">power_settings_new</span>
         </button>

@@ -9,10 +9,9 @@ export const Container = styled.div`
   }
 
   section {
-    margin-top: 20px;
+    margin: 20px 0 20px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-
   }
 `;
