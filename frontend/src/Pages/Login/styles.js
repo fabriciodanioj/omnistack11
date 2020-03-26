@@ -33,7 +33,7 @@ export const Container = styled.div`
     }
 
     div {
-      margin-top: 16px;
+      margin-top: 20px;
       display: flex;
       align-items: center;
 
@@ -45,7 +45,12 @@ export const Container = styled.div`
         text-decoration: none;
         margin-left: 10px;
         color: #41414d;
-        font-weight: bold;
+        font-weight: 500;
+        transition: opacity 0.2s;
+      }
+
+      .link:hover {
+        opacity: 0.6;
       }
     }
   }

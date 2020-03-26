@@ -35,12 +35,23 @@ export default createGlobalStyle`
     filter: brightness(90%)
   }
 
-  form input {
+  form input, textarea {
     width: 100%;
     height: 60px;
     color: #333;
     border: 1px solid #dcdce6;
     border-radius: 8px;
     padding: 0 24px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+
+  input[type=number] {
+    -moz-appearance: textfield;
   }
 `;
